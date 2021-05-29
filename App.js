@@ -7,32 +7,21 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {View} from 'react-native';
+import Competences from './components/Compenteces';
+import {Header} from './components/Header';
+import {Curriculum} from './components/Curriculum';
 
 const App = () => {
-  const name = 'Henrique Aron Ferreira';
+  const name = 'Henrique Aron';
 
   console.log(name);
 
   const date = new Date().toLocaleDateString();
 
   console.log(date);
+
+  const description = 'I know how to use JSX';
 
   const competences = ['How to handle variables on JS'];
 
@@ -57,11 +46,18 @@ const App = () => {
 
   return (
     <View>
-      <Text>{returnName()}</Text>
-      <Text>Date: {user.date}</Text>
-      <Text>Competences: {user.competences.join(', ')}</Text>
+      <Header name={name} date={date} description={description} />
+
+      <Competences user={user} />
+
+      <Curriculum user={user} />
     </View>
   );
+};
+
+export const returnName = () => {
+  if (name == 'Henrique Aron Ferreira') return 'Mesmo nome';
+  else return name;
 };
 
 export default App;
